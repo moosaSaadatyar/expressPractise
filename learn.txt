@@ -14,7 +14,7 @@ app.listen(PORT, (err, res) => {
 });
 
 *********************************************
-get data from express
+Get data from express
 *********************************************
 app.get("/friends", (req, res) => {
   res.send(friends);
@@ -22,7 +22,7 @@ app.get("/friends", (req, res) => {
 
 
 *********************************************
-get data from express with params
+Get data from express with params
 *********************************************
 app.get("/friends/:id", (req, res) => {
   const param = req.params.id;
@@ -33,3 +33,27 @@ app.get("/friends/:id", (req, res) => {
   res.send(frendId);
 });
 
+*********************************************
+midelwer 
+*********************************************
+app.use(express.json());
+
+
+*********************************************
+Post data from express 
+*********************************************
+app.post("/friends", (req, res) => {
+  let newFriends = {
+    id: friends.length,
+    name: req.body.name,
+  };
+
+  if (!req.body.name) {
+    return res.status(400).json({
+      error: "friend not found",
+    });
+  }
+
+  friends.push(newFriends);
+  res.json(newFriends);
+});
