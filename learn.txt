@@ -57,3 +57,18 @@ app.post("/friends", (req, res) => {
   friends.push(newFriends);
   res.json(newFriends);
 });
+
+*********************************************
+Put data from express 
+*********************************************
+app.put("/friends/:id", (req, res) => {
+  const friendId = parseInt(req.params.id);
+  const friend = friends.find((item) => item.id === friendId);
+  if (!friendId || !req.body.name) {
+    return res.status(404).json({
+      error: "there was not friends with this Info",
+    });
+  }
+  friend.name = req.body.name;
+  res.send(friend);
+});
