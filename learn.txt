@@ -72,3 +72,24 @@ app.put("/friends/:id", (req, res) => {
   friend.name = req.body.name;
   res.send(friend);
 });
+
+*********************************************
+delete data from express 
+*********************************************
+app.delete("/friends/:id", (req, res) => {
+  const friendId = parseInt(req.params.id);
+  const friendIndex = friends.findIndex((item) => item.id === friendId);
+  if (friendIndex === -1) {
+    return res.status(404).json({ error: "Friend not found" });
+  }
+  const deletedFriend = friends.splice(friendIndex, 1);
+  res.json(deletedFriend[0]);
+});
+
+*********************************************
+28-MVC- model view controler (disine patern)
+*********************************************
+1-user: send request => 
+2-controler: get request and chenge  models => 
+3-models can be data from data base => 
+4- view get data from data base and show too userbn => 
