@@ -92,4 +92,33 @@ app.delete("/friends/:id", (req, res) => {
 1-user: send request => 
 2-controler: get request and chenge  models => 
 3-models can be data from data base => 
-4- view get data from data base and show too userbn => 
+4- view get data from data base and show too user
+
+*********************************************
+29-Express- router
+*********************************************
+
+const express = require("express");
+const friendsRouter= express.Router();
+const app = express();
+
+const massagesRouter = express.Router();
+massagesRouter.get("/", massegeController.messages);
+massagesRouter.post("/:messageId", massegeController.postMessagesById);
+app.use('/messages', massagesRouter)
+
+//getfriends controller
+friendsRouter.get("/", friendsController.getFriends);
+
+friendsRouter.get("/:id", friendsController.getFriendById);
+
+// postfriends controller
+friendsRouter.post("/", friendsController.postFriends);
+
+//putfriends controller
+friendsRouter.put("/:id", friendsController.putFriends);
+
+//deletefriends controller
+friendsRouter.delete("/:id", friendsController.deleteFriends);
+
+app.use("/friends", friendsRouter);
