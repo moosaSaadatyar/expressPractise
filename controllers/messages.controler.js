@@ -1,3 +1,5 @@
+const path = require("path");
+
 function postMessagesById(req, res) {
   if (!req.body.name) {
     return res.status(400).json({
@@ -8,7 +10,8 @@ function postMessagesById(req, res) {
 }
 
 function messages(req, res) {
-  res.send("Hello from Express.js");
+  const filePath = path.join(__dirname, "..", "public", "2.jpg");
+  res.sendFile(filePath);
 }
 
 module.exports = { postMessagesById, messages };

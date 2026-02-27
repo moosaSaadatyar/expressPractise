@@ -122,3 +122,16 @@ friendsRouter.put("/:id", friendsController.putFriends);
 friendsRouter.delete("/:id", friendsController.deleteFriends);
 
 app.use("/friends", friendsRouter);
+
+*********************************************
+30-send file
+*********************************************
+const path = require("path");
+function messages(req, res) {
+  const filePath = path.join(__dirname, "..", "public", "2.jpg");
+  res.sendFile(filePath);
+}
+
+messagesRouter.get("/", massegeControler.messages);
+app.use("/messages", messagesRouter);
+
