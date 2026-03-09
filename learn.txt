@@ -135,3 +135,21 @@ function messages(req, res) {
 messagesRouter.get("/", massegeControler.messages);
 app.use("/messages", messagesRouter);
 
+
+*********************************************
+31-use template html 
+*********************************************
+* static 
+const path = require("path");
+app.use("/site", express.static(path.join(__dirname, "public")));
+
+*dynamic
+app.set("view engine", "hbs");
+app.set("views", "views");
+
+app.get("/", (req, res) => {
+  res.render("index", {
+    title: "This Is a Title...!!!",
+    caption: "this Is a cation about  you",
+  });
+});
