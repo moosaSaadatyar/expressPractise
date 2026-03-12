@@ -10,6 +10,11 @@ function postMessagesById(req, res) {
 }
 
 function messages(req, res) {
+  res.render('messages',{
+    title:'message for mr ',
+    friends:'ali amany'
+
+  })
   const filePath = path.join(__dirname, "..", "public", "2.jpg");
   res.sendFile(filePath);
 }
