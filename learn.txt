@@ -1,3 +1,4 @@
+** install library in internal repasotory(--registry="https://mirror-npm.runflare.com")*
 * for start a express js project
 1: npm init -y
 2: npm i express
